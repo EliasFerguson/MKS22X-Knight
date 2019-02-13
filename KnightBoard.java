@@ -7,6 +7,8 @@ public class KnightBoard {
     if (startingRows < 1 || startingCols < 1) {
       throw new IllegalArgumentException("Inputs must be one or greater.");
     }
-
+    board = new int[startingRows][startingCols];
+    rows = startingRows;
+    cols = startingCols;
   }
 }
