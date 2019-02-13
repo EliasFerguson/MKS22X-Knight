@@ -1,7 +1,12 @@
 public class KnightBoard {
+  private int rows;
+  private int cols;
+  private int[][] board;
+  private int[][] moves;
   public KnightBoard(int startingRows, int startingCols) {
-    if (startingRows < 0 || startingCols < 0) {
-      throw new IllegalArgumentException("Inputs must be zero or greater.");
+    if (startingRows < 1 || startingCols < 1) {
+      throw new IllegalArgumentException("Inputs must be one or greater.");
     }
+
   }
 }
