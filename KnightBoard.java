@@ -32,4 +32,10 @@ public class KnightBoard {
     }
     return output;
   }
+  public boolean solve(int r, int c) {
+    return solveH(r, c, 0);
+  }
+  private boolean solveH(int r, int c, int move) {
+    return false;
+  }
 }
