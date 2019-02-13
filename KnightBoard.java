@@ -11,4 +11,7 @@ public class KnightBoard {
     rows = startingRows;
     cols = startingCols;
   }
+  public void clear() {
+    board = new int[rows][cols];
+  }
 }
