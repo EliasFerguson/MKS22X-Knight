@@ -14,4 +14,22 @@ public class KnightBoard {
   public void clear() {
     board = new int[rows][cols];
   }
+  public String toString() {
+    String output = "";
+    for (int[] elem:board) {
+      for (int num: elem) {
+        if (num == 0) {
+          output += "_ ";
+        }
+        else if (num / 10 == 0) {
+          output += " " + num + " ";
+        }
+        else {
+          output += num;
+        }
+      }
+      output += "\n";
+    }
+    return output;
+  }
 }
