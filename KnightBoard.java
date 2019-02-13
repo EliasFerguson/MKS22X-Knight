@@ -17,7 +17,7 @@ public class KnightBoard {
   public String toString() {
     String output = "";
     for (int[] elem:board) {
-      for (int num: elem) {
+      for (int num:elem) {
         if (num == 0) {
           output += "_ ";
         }
@@ -31,6 +31,13 @@ public class KnightBoard {
       output += "\n";
     }
     return output;
+  }
+  public void exception() {
+    for (int[] elem:board) {
+      for (int num:elem) {
+        if (num != 0) throw new IllegalStateException("Board must be filled with zeros.");
+      }
+    }
   }
   public boolean solve(int r, int c) {
     return solveH(r, c, 0);
