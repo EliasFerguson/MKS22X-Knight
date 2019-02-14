@@ -46,8 +46,10 @@ public class KnightBoard {
     return solveH(r, c, 0);
   }
   private boolean solveH(int r, int c, int move) {
-    if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
-    else if (move == n) return true;
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
+    else if (board[r][c] != 0) return false; //If the spot has already been visited.
+    else if (move == n) return true; //If the spot hasn't been visited and is the final move.
+
     return false;
   }
 }
