@@ -41,6 +41,20 @@ public class KnightBoard {
       }
     }
   }
+  private boolean move(int r, int c, int x, int y, int move) {
+    try {
+      if (board[r+x][c+y] == 0) {
+        board[r+x][c+y] = move;
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    catch (Exception e) {
+      return false;
+    }
+  }
   public boolean solve(int r, int c) {
     exception();
     return solveH(r, c, 0);
@@ -49,7 +63,8 @@ public class KnightBoard {
     if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
     else if (board[r][c] != 0) return false; //If the spot has already been visited.
     else if (move == n) return true; //If the spot hasn't been visited and is the final move.
-
-    return false;
+    else {
+      return true;
+    }
   }
 }
