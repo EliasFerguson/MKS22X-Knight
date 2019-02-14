@@ -3,6 +3,7 @@ public class KnightBoard {
   private int cols;
   private int[][] board;
   private int[][] moves;
+  private int n;
   public KnightBoard(int startingRows, int startingCols) {
     if (startingRows < 1 || startingCols < 1) {
       throw new IllegalArgumentException("Inputs must be one or greater.");
@@ -10,6 +11,7 @@ public class KnightBoard {
     board = new int[startingRows][startingCols];
     rows = startingRows;
     cols = startingCols;
+    n = startingCols * startingRows;
   }
   public void clear() {
     board = new int[rows][cols];
@@ -40,9 +42,12 @@ public class KnightBoard {
     }
   }
   public boolean solve(int r, int c) {
+    exception();
     return solveH(r, c, 0);
   }
   private boolean solveH(int r, int c, int move) {
+    if (move == n) return true;
+    
     return false;
   }
 }
