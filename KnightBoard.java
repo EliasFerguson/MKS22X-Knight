@@ -34,6 +34,15 @@ public class KnightBoard {
     }
     return output;
   }
+  private boolean move(int r, int c, int x, int y, int move) {
+    try {
+      if (board[r+x][c+y] == 0) board[r+x][c+y] = move;
+      return true;
+    }
+    catch (Exception e) {
+      return false;
+    }
+  }
   public void exception() {
     for (int[] elem:board) {
       for (int num:elem) {
@@ -47,7 +56,6 @@ public class KnightBoard {
   }
   private boolean solveH(int r, int c, int move) {
     if (move == n) return true;
-    
     return false;
   }
 }
