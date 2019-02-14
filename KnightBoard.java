@@ -41,7 +41,7 @@ public class KnightBoard {
       }
     }
   }
-  private boolean move(int r, int c, int x, int y, int move) {
+  private boolean addKnight(int r, int c, int x, int y, int move) {
     try {
       if (board[r+x][c+y] == 0) {
         board[r+x][c+y] = move;
