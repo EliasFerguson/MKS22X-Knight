@@ -36,8 +36,13 @@ public class KnightBoard {
   }
   private boolean move(int r, int c, int x, int y, int move) {
     try {
-      if (board[r+x][c+y] == 0) board[r+x][c+y] = move;
-      return true;
+      if (board[r+x][c+y] == 0) {
+        board[r+x][c+y] = move;
+        return true;
+      }
+      else {
+        return false;
+      }
     }
     catch (Exception e) {
       return false;
@@ -55,7 +60,8 @@ public class KnightBoard {
     return solveH(r, c, 0);
   }
   private boolean solveH(int r, int c, int move) {
-    if (move == n) return true;
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
+    else if (move == n) return true;
     return false;
   }
 }
