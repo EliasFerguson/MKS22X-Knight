@@ -2,7 +2,7 @@ public class KnightBoard {
   private int rows;
   private int cols;
   private int[][] board;
-  private int[][] moves;
+  private int[] moves;
   private int n;
   public KnightBoard(int startingRows, int startingCols) {
     if (startingRows < 1 || startingCols < 1) {
@@ -12,6 +12,7 @@ public class KnightBoard {
     rows = startingRows;
     cols = startingCols;
     n = startingCols * startingRows;
+    moves = new int[] {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
   }
   public void clear() {
     board = new int[rows][cols];
@@ -41,10 +42,10 @@ public class KnightBoard {
       }
     }
   }
-  private boolean addKnight(int r, int c, int x, int y, int move) {
+  private boolean addKnight(int r, int c, int move) {
     try {
-      if (board[r+x][c+y] == 0) {
-        board[r+x][c+y] = move;
+      if (board[r][c] == 0) {
+        board[r][c] = move + 1;
         return true;
       }
       else {
@@ -54,6 +55,18 @@ public class KnightBoard {
     catch (Exception e) {
       return false;
     }
+  }
+  private boolean removeKnight(int r, int c, int move) {
+    try {
+      if (board[r][c] == move) {
+        board[r][c] = 0;
+        return true;
+      }
+    }
+    catch (Exception e) {
+      return false;
+    }
+    return false;
   }
   public boolean solve(int r, int c) {
     exception();
