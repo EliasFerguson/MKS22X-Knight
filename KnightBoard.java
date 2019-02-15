@@ -45,7 +45,7 @@ public class KnightBoard {
   private boolean addKnight(int r, int c, int move) {
     try {
       if (board[r][c] == 0) {
-        board[r][c] = move + 1;
+        board[r][c] = move;
         return true;
       }
       else {
@@ -62,11 +62,13 @@ public class KnightBoard {
         board[r][c] = 0;
         return true;
       }
+      else {
+        return false;
+      }
     }
     catch (Exception e) {
       return false;
     }
-    return false;
   }
   public boolean solve(int r, int c) {
     exception();
