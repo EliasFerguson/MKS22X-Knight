@@ -79,7 +79,15 @@ public class KnightBoard {
     else if (board[r][c] != 0) return false; //If the spot has already been visited.
     else if (move == n) return true; //If the spot hasn't been visited and is the final move.
     else {
-      return true;
+      for (int i = 0; i < moves.length; i += 2) {
+        int rInc = moves[i];
+        int cInc = moves[i + 1];
+        if (addKnight(r + rInc, c + cInc, move)) {
+          return solveH(r + rInc, c + cInc, move + 1);
+        }
+      }
+      removeKnight(r, c, move);
+      return solveH(r, c, move - 1);
     }
   }
 }
