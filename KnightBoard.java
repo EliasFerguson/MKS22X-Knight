@@ -43,18 +43,10 @@ public class KnightBoard {
     }
   }
   private boolean addKnight(int r, int c, int move) {
-    try {
-      if (board[r][c] == 0) {
-        board[r][c] = move;
-        return true;
-      }
-      else {
-        return false;
-      }
-    }
-    catch (Exception e) {
-      return false;
-    }
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
+    else if (board[r][c] != 0) return false;
+    board[r][c] = move;
+    return true;
   }
   private boolean removeKnight(int r, int c) {
     if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
