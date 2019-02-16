@@ -56,37 +56,32 @@ public class KnightBoard {
       return false;
     }
   }
-  private boolean removeKnight(int r, int c, int move) {
-    try {
-      if (board[r][c] == move) {
-        board[r][c] = 0;
-        return true;
-      }
-      else {
-        return false;
-      }
+  private boolean removeKnight(int r, int c) {
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
+    else if (board[r][c] == 0) return false;
+    board[r][c] = 0;
+    return true;
     }
-    catch (Exception e) {
-      return false;
-    }
-  }
   public boolean solve(int r, int c) {
     exception();
     return solveH(r, c, 0);
   }
   private boolean solveH(int r, int c, int move) {
-    if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
-    else if (board[r][c] != 0) return false; //If the spot has already been visited.
-    else if (move == n) return true; //If the spot hasn't been visited and is the final move.
+    //if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
+    //else if (board[r][c] != 0) return false; //If the spot has already been visited.
+    if (move == n) return true; //If the spot hasn't been visited and is the final move.
     else {
       for (int i = 0; i < moves.length; i += 2) {
+        System.out.println(this);
         int rInc = moves[i];
         int cInc = moves[i + 1];
-        if (addKnight(r + rInc, c + cInc, move)) {
+        if (addKnight(r, c, move)) {
+          System.out.println(this);
           return solveH(r + rInc, c + cInc, move + 1);
         }
       }
-      removeKnight(r, c, move);
+      removeKnight(r, c);
+      System.out.println(this);
       return solveH(r, c, move - 1);
     }
   }
