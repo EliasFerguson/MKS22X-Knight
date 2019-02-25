@@ -79,7 +79,7 @@ public class KnightBoard {
     }
     private int countSolutionsHelper(int r, int c, int move) {
       int total = 0;
-      if (move == n) return 1;
+      if (move == n + 1) return 1;
       if (addKnight(r, c, move)) {
         for (int i = 0; i < moves.length; i += 2) {
           //System.out.println(this);
