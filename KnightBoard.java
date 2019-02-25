@@ -1,3 +1,4 @@
+import java.util.*;
 public class KnightBoard {
   private int rows;
   private int cols;
@@ -12,7 +13,8 @@ public class KnightBoard {
       col = colIn;
     }
     public int compareTo(Tile b) {
-
+      Tile a = this;
+      return optimizedMoves[a.r][a.c] - optimizedMoves[b.r][b.c];
     }
   }
   public KnightBoard(int startingRows, int startingCols) {
