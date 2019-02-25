@@ -67,7 +67,7 @@ public class KnightBoard {
         //System.out.println(this);
         int rInc = moves[i];
         int cInc = moves[i + 1];
-        return solveH(r + rInc, c + cInc, move + 1);
+        if (solveH(r + rInc, c + cInc, move + 1)) return true;
         }
         removeKnight(r, c);
       }
