@@ -4,8 +4,16 @@ public class KnightBoard {
   private int[][] board;
   private int[] moves;
   private int n;
+  private int[][] optimizedMoves;
   private class Node implements Comparable<Tile> {
-    
+    int row, col;
+    Tile(int rowIn, int colIn) {
+      row = rowIn;
+      col = colIn;
+    }
+    public int compareTo(Tile b) {
+
+    }
   }
   public KnightBoard(int startingRows, int startingCols) {
     if (startingRows < 1 || startingCols < 1) {
