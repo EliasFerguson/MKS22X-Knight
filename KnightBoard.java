@@ -28,6 +28,7 @@ public class KnightBoard {
     cols = startingCols;
     n = startingCols * startingRows;
     moves = new int[] {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
+    optimizedOptions = new Node[] { new Node(1, 2), new Node(1, -2), new Node(-1, 2), new Node(-1, -2), new Node(2, 1), new Node(2, -1), new Node(-2, 1), new Node(-2, -1) };
   }
   public void clear() {
     board = new int[rows][cols];
