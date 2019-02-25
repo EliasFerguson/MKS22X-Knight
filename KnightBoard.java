@@ -74,4 +74,6 @@ public class KnightBoard {
       //System.out.println(this);
       return false;
     }
+
+    
   }
