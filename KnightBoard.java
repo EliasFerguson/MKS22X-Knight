@@ -78,7 +78,20 @@ public class KnightBoard {
       return countSolutionsHelper(0, 0, 1);
     }
     private int countSolutionsHelper(int r, int c, int move) {
-      
+      if (move == n) return 1;
+      int total = 0;
+      if (addKnight(r, c, move)) {
+        for (int i = 0; i < moves.length; i += 2) {
+          //System.out.println(this);
+          int rInc = moves[i];
+          int cInc = moves[i + 1];
+          if (solveH(r + rInc, c + cInc, move + 1)) return true;
+          }
+          removeKnight(r, c);
+        }
+        //System.out.println(this);
+        return false;
+      }
     }
 
   }
