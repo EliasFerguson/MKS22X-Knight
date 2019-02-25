@@ -4,6 +4,9 @@ public class KnightBoard {
   private int[][] board;
   private int[] moves;
   private int n;
+  private class Node implements Comparable<Tile> {
+    
+  }
   public KnightBoard(int startingRows, int startingCols) {
     if (startingRows < 1 || startingCols < 1) {
       throw new IllegalArgumentException("Inputs must be one or greater.");
@@ -79,7 +82,7 @@ public class KnightBoard {
     }
     private int countSolutionsHelper(int r, int c, int move) {
       int total = 0;
-      if (move == n + 1) return 1;
+      if (move > n) return 1;
       if (addKnight(r, c, move)) {
         if (move == n) total++;
         else {
