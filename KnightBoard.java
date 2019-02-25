@@ -6,6 +6,7 @@ public class KnightBoard {
   private int[] moves;
   private int n;
   private int[][] optimizedMoves;
+  private Node[] optimizedOptions;
   private class Node implements Comparable<Node> {
     private int row, col;
     private Node(int rowIn, int colIn) {
@@ -16,6 +17,7 @@ public class KnightBoard {
       Node a = this;
       return optimizedMoves[a.row][a.col] - optimizedMoves[b.row][b.col];
     }
+
   }
   public KnightBoard(int startingRows, int startingCols) {
     if (startingRows < 1 || startingCols < 1) {
