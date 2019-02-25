@@ -74,6 +74,11 @@ public class KnightBoard {
       //System.out.println(this);
       return false;
     }
+    public int countSolutions(int startRow, int startCol) {
+      return countSolutionsHelper(0, 0, 1);
+    }
+    private int countSolutionsHelper(int r, int c, int move) {
+      
+    }
 
-    
   }
