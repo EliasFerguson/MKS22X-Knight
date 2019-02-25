@@ -56,7 +56,7 @@ public class KnightBoard {
     }
   public boolean solve(int r, int c) {
     exception();
-    return solveH(r, c, 0);
+    return solveH(r, c, 1);
   }
   private boolean solveH(int r, int c, int move) {
     //if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
@@ -64,14 +64,14 @@ public class KnightBoard {
     if (move == n) return true; //If the spot hasn't been visited and is the final move.
     if (addKnight(r, c, move)) {
       for (int i = 0; i < moves.length; i += 2) {
-        System.out.println(this);
+        //System.out.println(this);
         int rInc = moves[i];
         int cInc = moves[i + 1];
         return solveH(r + rInc, c + cInc, move + 1);
         }
+        removeKnight(r, c);
       }
-      removeKnight(r, c);
-      System.out.println(this);
-      return solveH(r, c, move - 1);
+      //System.out.println(this);
+      return false;
     }
   }
