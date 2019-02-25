@@ -6,15 +6,15 @@ public class KnightBoard {
   private int[] moves;
   private int n;
   private int[][] optimizedMoves;
-  private class Node implements Comparable<Tile> {
-    int row, col;
-    Tile(int rowIn, int colIn) {
+  private class Node implements Comparable<Node> {
+    private int row, col;
+    private Node(int rowIn, int colIn) {
       row = rowIn;
       col = colIn;
     }
-    public int compareTo(Tile b) {
-      Tile a = this;
-      return optimizedMoves[a.r][a.c] - optimizedMoves[b.r][b.c];
+    public int compareTo(Node b) {
+      Node a = this;
+      return optimizedMoves[a.row][a.col] - optimizedMoves[b.row][b.col];
     }
   }
   public KnightBoard(int startingRows, int startingCols) {
