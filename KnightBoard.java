@@ -9,7 +9,7 @@ public class KnightBoard {
   private Node[] optimizedOptions;
   private class Node implements Comparable<Node> {
     private int row, col;
-    private Node(int rowIn, int colIn) {
+    public Node(int rowIn, int colIn) {
       row = rowIn;
       col = colIn;
     }
@@ -41,13 +41,13 @@ public class KnightBoard {
     for (int[] elem:board) {
       for (int num:elem) {
         if (num == 0) {
-          output += "_ ";
+          output += " _ ";
         }
         else if (num / 10 == 0) {
           output += " " + num + " ";
         }
         else {
-          output += num;
+          output += num + " ";
         }
       }
       output += "\n";
