@@ -13,10 +13,12 @@ public class KnightBoard {
       row = rowIn;
       col = colIn;
     }
+    //CompareTo method to implement Comparable and allow for use of sort.
     public int compareTo(Node b) {
       Node a = this;
       return optimizedBoard[a.row][a.col] - optimizedBoard[b.row][b.col];
     }
+    //A way of adding two nodes to move a node.
     public Node move(Node b) {
       Node a = this;
       return new Node(a.row + b.row, a.col + b.col);
@@ -81,12 +83,14 @@ public class KnightBoard {
       }
     }
   }
+  //Checks if a knight can be added, if it can, 0 is changed to 1 on the board.
   private boolean addKnight(int r, int c, int move) {
     if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
     else if (board[r][c] != 0) return false;
     board[r][c] = move;
     return true;
   }
+  //Checks if a knight can be removed, if it can, 1 is changed to 0 on the board.
   private boolean removeKnight(int r, int c) {
     if (r < 0 || r >= rows || c < 0 || c >= cols) return false;
     else if (board[r][c] == 0) return false;
@@ -96,8 +100,10 @@ public class KnightBoard {
   public boolean solve(int r, int c) {
     exception();
     Node start = new Node(r, c);
+    if (!onBoard(start)) throw new IllegalArgumentException();
     return solveOptim(start, 1);
   }
+  //Non-optimized version, currently obsolete.
   private boolean solveH(int r, int c, int move) {
     //if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
     //else if (board[r][c] != 0) return false; //If the spot has already been visited.
@@ -115,6 +121,9 @@ public class KnightBoard {
       return false;
     }
     public int countSolutions(int startRow, int startCol) {
+      exception();
+      Node test = new Node(startRow, startCol);
+      if (!onBoard(test)) throw new IllegalArgumentException();
       return countSolutionsHelper(startRow, startCol, 1);
     }
     private int countSolutionsHelper(int r, int c, int move) {
@@ -135,20 +144,24 @@ public class KnightBoard {
         //System.out.println(this);
         return total;
       }
+      //Method to test if a Node is on the board.
     private boolean onBoard(Node test) {
       int r = test.row;
       int c = test.col;
       return (r >= 0 && r < rows && c >= 0 && c < cols);
     }
+    //Optimized solution
     private boolean solveOptim(Node curr, int moveNum) {
       if (moveNum >= n) return true;
       ArrayList<Node> movesToDo = new ArrayList<Node>();
+      //Filling the List with possible moves, instead of using all 8.
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
         if (onBoard(possibleNew) && board[possibleNew.row][possibleNew.col] == 0) {
           movesToDo.add(possibleNew);
         }
       }
+      //Sorts the list
       Collections.sort(movesToDo);
       for (Node option:movesToDo) {
         board[option.row][option.col] = moveNum;
@@ -163,6 +176,7 @@ public class KnightBoard {
       }
       return false;
     }
+    //Method used to undo the work done on the optimized board if the solution is not possible.
     private void undo(Node n) {
       board[n.row][n.col] = 0;
       for (Node possible:optimizedOptions) {
