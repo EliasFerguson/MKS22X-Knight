@@ -175,7 +175,7 @@ public class KnightBoard {
     }
     private int countOptim(Node curr, int moveNum) {
       int total = 0;
-      if (moveNum >= n) return 1;
+      if (moveNum > n) return 1;
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
@@ -192,7 +192,11 @@ public class KnightBoard {
             optimizedBoard[test.row][test.col] -= 1;
           }
         }
-        total += countOptim(option, moveNum + 1);
+        //System.out.println(this);
+        if (moveNum == n) total += 1;
+        else {
+          total += countOptim(option, moveNum + 1);
+        }
         undo(option);
       }
       return total;
