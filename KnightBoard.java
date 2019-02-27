@@ -134,12 +134,17 @@ public class KnightBoard {
         //System.out.println(this);
         return total;
       }
+    private boolean onBoard(Node test) {
+      int r = test.row;
+      int c = test.col;
+      return (r >= 0 && r < rows && c >= 0 && c < cols);
+    }
     private boolean solveOptim(Node curr, int move) {
       if (move > n) return true;
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
-        
+
       }
       return false;
     }
