@@ -5,7 +5,7 @@ public class KnightBoard {
   private int[][] board;
   private int[] moves;
   private int n;
-  private int[][] optimizedMoves;
+  private int[][] optimizedBoard;
   private Node[] optimizedOptions;
   private class Node implements Comparable<Node> {
     private int row, col;
@@ -15,7 +15,7 @@ public class KnightBoard {
     }
     public int compareTo(Node b) {
       Node a = this;
-      return optimizedMoves[a.row][a.col] - optimizedMoves[b.row][b.col];
+      return optimizedBoard[a.row][a.col] - optimizedBoard[b.row][b.col];
     }
     public Node move(Node b) {
       Node a = this;
@@ -32,6 +32,13 @@ public class KnightBoard {
     n = startingCols * startingRows;
     moves = new int[] {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
     optimizedOptions = new Node[] { new Node(1, 2), new Node(1, -2), new Node(-1, 2), new Node(-1, -2), new Node(2, 1), new Node(2, -1), new Node(-2, 1), new Node(-2, -1) };
+  }
+  public void initializeOBoard() {
+    for (int i = 0; i < rows; i++) {
+      for (int i2 = 0; i2 < cols; i2++) {
+        
+      }
+    }
   }
   public void clear() {
     board = new int[rows][cols];
@@ -116,5 +123,6 @@ public class KnightBoard {
       }
     private boolean solveOptim(Node curr, int move) {
       if (move > n) return true;
+      return false;
     }
   }
