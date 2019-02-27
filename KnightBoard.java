@@ -95,7 +95,8 @@ public class KnightBoard {
     }
   public boolean solve(int r, int c) {
     exception();
-    return solveH(r, c, 1);
+    Node start = new Node(r, c);
+    return solveOptim(start, 1);
   }
   private boolean solveH(int r, int c, int move) {
     //if (r < 0 || r >= rows || c < 0 || c >= cols) return false; //If the spot is outside the board.
