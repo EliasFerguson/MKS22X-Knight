@@ -139,8 +139,8 @@ public class KnightBoard {
       int c = test.col;
       return (r >= 0 && r < rows && c >= 0 && c < cols);
     }
-    private boolean solveOptim(Node curr, int move) {
-      if (move > n) return true;
+    private boolean solveOptim(Node curr, int moveNum) {
+      if (moveNum > n) return true;
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
@@ -148,6 +148,16 @@ public class KnightBoard {
           movesToDo.add(possibleNew);
         }
       }
-      
+      for (Node option:movesToDo) {
+        board[option.row][option.col] = moveNum;
+        for (Node change:optimizedOptions) {
+          Node test = change.move(option);
+          if (onBoard(test)) {
+            optimizedBoard[test.row][test.col] -= 1;
+          }
+        }
+        if (solveOptim(option, moveNum + 1)) return true;
+
+      }
     }
   }
