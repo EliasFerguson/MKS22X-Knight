@@ -42,7 +42,11 @@ public class KnightBoard {
         }
         else {
           for (Node inQuestion:optimizedOptions) {
-
+            int newRow = i + inQuestion.row;
+            int newCol = i2 + inQuestion.col;
+            if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+              optimizedBoard[i][i2] += 1;
+            }
           }
         }
       }
