@@ -144,10 +144,10 @@ public class KnightBoard {
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
-        if (onBoard(possibleNew)) {
-          optimizedBoard[possibleNew.row][possibleNew.col] -= 1;
+        if (onBoard(possibleNew) && board[possibleNew.row][possibleNew.col] == 0) {
+          movesToDo.add(possibleNew);
         }
       }
-      return false;
+      
     }
   }
