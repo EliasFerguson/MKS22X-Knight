@@ -114,4 +114,7 @@ public class KnightBoard {
         //System.out.println(this);
         return total;
       }
+    private boolean solveOptim(Node curr, int move) {
+      if (move > n) return true;
+    }
   }
