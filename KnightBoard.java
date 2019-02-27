@@ -172,4 +172,28 @@ public class KnightBoard {
         }
       }
     }
+    private int countOptim(Node curr, int moveNum) {
+      int total = 0;
+      if (moveNum >= n) return 1;
+      ArrayList<Node> movesToDo = new ArrayList<Node>();
+      for (Node test:optimizedOptions) {
+        Node possibleNew = curr.move(test);
+        if (onBoard(possibleNew) && board[possibleNew.row][possibleNew.col] == 0) {
+          movesToDo.add(possibleNew);
+        }
+      }
+      Collections.sort(movesToDo);
+      for (Node option:movesToDo) {
+        board[option.row][option.col] = moveNum;
+        for (Node change:optimizedOptions) {
+          Node test = change.move(option);
+          if (onBoard(test)) {
+            optimizedBoard[test.row][test.col] -= 1;
+          }
+        }
+        total += countOptim(option, moveNum + 1);
+        undo(option);
+      }
+      return total;
+    }
   }
