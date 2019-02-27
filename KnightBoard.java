@@ -33,6 +33,7 @@ public class KnightBoard {
     n = startingCols * startingRows;
     moves = new int[] {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
     optimizedOptions = new Node[] { new Node(1, 2), new Node(1, -2), new Node(-1, 2), new Node(-1, -2), new Node(2, 1), new Node(2, -1), new Node(-2, 1), new Node(-2, -1) };
+    initializeOBoard();
   }
   public void initializeOBoard() {
     for (int i = 0; i < rows; i++) {
@@ -135,6 +136,11 @@ public class KnightBoard {
       }
     private boolean solveOptim(Node curr, int move) {
       if (move > n) return true;
+      ArrayList<Node> movesToDo = new ArrayList<Node>();
+      for (Node test:optimizedOptions) {
+        Node possibleNew = curr.move(test);
+        
+      }
       return false;
     }
   }
