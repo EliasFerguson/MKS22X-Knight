@@ -141,7 +141,7 @@ public class KnightBoard {
       return (r >= 0 && r < rows && c >= 0 && c < cols);
     }
     private boolean solveOptim(Node curr, int moveNum) {
-      if (moveNum == n + 1) return true;
+      if (moveNum >= n) return true;
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       for (Node test:optimizedOptions) {
         Node possibleNew = curr.move(test);
