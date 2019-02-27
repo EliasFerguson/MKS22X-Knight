@@ -29,6 +29,7 @@ public class KnightBoard {
     board = new int[startingRows][startingCols];
     rows = startingRows;
     cols = startingCols;
+    optimizedBoard = new int[rows][cols];
     n = startingCols * startingRows;
     moves = new int[] {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
     optimizedOptions = new Node[] { new Node(1, 2), new Node(1, -2), new Node(-1, 2), new Node(-1, -2), new Node(2, 1), new Node(2, -1), new Node(-2, 1), new Node(-2, -1) };
@@ -36,7 +37,9 @@ public class KnightBoard {
   public void initializeOBoard() {
     for (int i = 0; i < rows; i++) {
       for (int i2 = 0; i2 < cols; i2++) {
-        
+        if (i < rows - 2 && i2 < cols - 2 && i > 1 && i2 > 1) {
+          optimizedBoard[i][i2] = 8;
+        }
       }
     }
   }
