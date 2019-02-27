@@ -40,6 +40,11 @@ public class KnightBoard {
         if (i < rows - 2 && i2 < cols - 2 && i > 1 && i2 > 1) {
           optimizedBoard[i][i2] = 8;
         }
+        else {
+          for (Node inQuestion:optimizedOptions) {
+
+          }
+        }
       }
     }
   }
