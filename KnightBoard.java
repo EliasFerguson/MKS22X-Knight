@@ -157,7 +157,16 @@ public class KnightBoard {
           }
         }
         if (solveOptim(option, moveNum + 1)) return true;
-
+        undo(option);
+      }
+    }
+    private void undo(Node n) {
+      board[n.row][n.col] = 0;
+      for (Node possible:optimizedOptions) {
+        Node curr = n.move(possible);
+        if (onBoard(curr)) {
+          optimizedBoard[curr.row][curr.col] -= 1;
+        }
       }
     }
   }
