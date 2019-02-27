@@ -193,8 +193,7 @@ public class KnightBoard {
           }
         }
         //System.out.println(this);
-        if (moveNum == n) total += 1;
-        else {
+        
           total += countOptim(option, moveNum + 1);
         }
         undo(option);
