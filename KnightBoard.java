@@ -115,7 +115,8 @@ public class KnightBoard {
       return false;
     }
     public int countSolutions(int startRow, int startCol) {
-      return countSolutionsHelper(0, 0, 1);
+      Node start = new Node(startRow, startCol);
+      return countOptim(start, 1);
     }
     private int countSolutionsHelper(int r, int c, int move) {
       int total = 0;
