@@ -5,6 +5,9 @@ public class Driver {
     runTest(2);
     runTest(3);
     runTest(4);
+    KnightBoard t = new KnightBoard(10, 10);
+    t.solve(0, 0);
+    System.out.println(t.toString());
   }
   //testcase must be a valid index of your input/output array
 public static void runTest(int i){
