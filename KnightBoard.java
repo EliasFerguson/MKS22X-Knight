@@ -101,7 +101,8 @@ public class KnightBoard {
     exception();
     Node start = new Node(r, c);
     if (!onBoard(start)) throw new IllegalArgumentException();
-    return solveOptim(start, 1);
+    addKnight(r, c, 1);
+    return solveOptim(start, 2);
   }
   //Non-optimized version, currently obsolete.
   private boolean solveH(int r, int c, int move) {
@@ -152,7 +153,10 @@ public class KnightBoard {
     }
     //Optimized solution
     private boolean solveOptim(Node curr, int moveNum) {
-      if (moveNum >= n) return true;
+      if (moveNum > n) {
+        addKnight(curr.row, curr.col, moveNum);
+        return true;
+      }
       ArrayList<Node> movesToDo = new ArrayList<Node>();
       //Filling the List with possible moves, instead of using all 8.
       for (Node test:optimizedOptions) {
